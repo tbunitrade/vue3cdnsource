@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <style>
+        .box {
+            padding: 100px 0;
+            width: 400px;
+            text-align: center;
+            background: #ddd;
+            margin: 20px;
+            display: inline-block;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+
+    Content of the Sparta
+
+    <div id="app">
+        <!-- -->
+
+        <!--  attribute binding -->
+        <a target="_blank" :href="url" :title="urltitle">{{urltext}}</a>
+
+
+        <div v-if="showItems">
+            <h3>Me is template also</h3>
+            <p>{{ title }} - {{author}} - {{age}} - {{year}}</p>
+
+            <p>{{ items[0].title }} - {{items[0].author}} - {{items[0].age}} - {{year}}</p>
+            <p>{{ items[1].title }} - {{items[1].author}} - {{items[1].age}} - {{year}}</p>
+
+            <ul>
+                <li v-for="item in items"> 
+                    <img :src="item.img" :alt="item.title">
+                    <h3>{{item.title}}</h3>  
+                    <p>{{item.author}} - {{item.age}} - {{year}} </p>
+                  
+                </li> 
+            </ul>
+            
+            <button v-on:click="age++">Increase age property</button>
+            
+            <button @click="age--">Decrease age property</button>
+            <br>
+            <button v-on:click="year++">Increase year property</button>
+            <button v-on:click="year--">Decrease year property</button>
+
+            <div @click="title='Sasha'">Change title </div>
+            <div @click="changeTitle">Change title as methods </div>
+            <div @click="changeTitleArgument('Sasha title')">Change title as methods </div>
+        </div>
+        <br>
+        <button @click="changeRule">ChangeMe</button>
+        <br>
+        <button @click="toggleShowItems">
+            <span v-if="showItems"> {{ hideitem }} </span>
+            <!-- <span v-if="!showItems"> {{ showitem }} </span> -->
+            <span v-else>{{ showitem }} </span>
+           
+        </button>
+
+        <div v-show="showItems">Currently show items list</div>
+
+        <!-- mouse events -->
+
+        <div class="box" @mouseover="handleEvent($event, 5)">event mouseover </div>
+        <div class="box box2" @mouseleave="handleEvent"> mouseleave</div>
+        <div class="box" @dblclick="handleEvent"> double click</div>
+        <div class="box" @mousemove="handleMousemove"> position - {{x}} {{y}}</div>
+
+        <!--  array of Data -->
+
+
+
+
+
+    </div>
+    
+
+    <script src="app.js"></script>
+</body>
+</html>
