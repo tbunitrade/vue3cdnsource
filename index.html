@@ -16,6 +16,21 @@
             display: inline-block;
             vertical-align: top;
         }
+
+        li {
+            list-style-type: none;
+            margin: 1em 0em;
+            padding: 1em;
+            border: 2px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+        }
+        .favorite {
+            border: 2px solid green;
+            background: #ccc;
+            
+        }
     </style>
 </head>
 <body>
@@ -24,7 +39,7 @@
 
     <div id="app">
         <!-- -->
-
+        <p>{{filteredItems}}</p>
         <!--  attribute binding -->
         <a target="_blank" :href="url" :title="urltitle">{{urltext}}</a>
 
@@ -37,7 +52,7 @@
             <p>{{ items[1].title }} - {{items[1].author}} - {{items[1].age}} - {{year}}</p>
 
             <ul>
-                <li v-for="item in items"> 
+                <li v-for="item in filteredItems" :class="{ favorite: item.isFav}" @click="toggleFavorite(item)"> 
                     <img :src="item.img" :alt="item.title">
                     <h3>{{item.title}}</h3>  
                     <p>{{item.author}} - {{item.age}} - {{year}} </p>

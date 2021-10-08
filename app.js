@@ -55,8 +55,20 @@ const app = Vue.createApp({
         handleMousemove(e){
             this.x = e.offsetX
             this.y = e.offsetY
+        },
+        toggleFavorite(item) {
+           item.isFav = !item.isFav;
+
+             
         }
     },
+    computed: {
+        filteredItems() {
+            //return 'hello filteredItems'
+            return this.items.filter( (item) => item.isFav)
+
+        }
+    }
 
 })
 
